@@ -27,6 +27,6 @@ sub postamble {
 all :: write_googlekey
 
 write_googlekey:
-	if [ "x$(GOOGLE_KEY)" != "x" ]; then cat $(GOOGLE_KEY) > .googlekey; else touch .googlekey; fi
+	if [ "x$(GOOGLE_KEY)" != "x" ]; then if [ -e '$(GOOGLE_KEY)' ]; then cat '$(GOOGLE_KEY)' > .googlekey; else echo '$(GOOGLE_KEY)' > .googlekey; fi; else touch .googlekey; fi
 P
 }
