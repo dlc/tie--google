@@ -15,7 +15,7 @@ $OPTIONS = Tie::Google::OPTIONS();
 %options = (
     "ie"            => "utf-64",
     "oe"            => "utf-64",
-    "debug"         => 1,
+#    "debug"         => 1,
     "starts_at"     => $$,
     "max_results"   => $$ ^ 2,
 );
