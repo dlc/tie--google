@@ -1,7 +1,7 @@
 package Tie::Google;
 
 # ----------------------------------------------------------------------
-# $Id: Google.pm,v 1.1 2003/02/14 20:30:45 dlc Exp $
+# $Id: Google.pm,v 1.2 2003/03/14 19:56:10 dlc Exp $
 # ----------------------------------------------------------------------
 # Apparently, a few people thought this would be a neat idea.
 # The initial email I recieved on the topic:
@@ -41,7 +41,7 @@ sub SCALAR() { 0 }
 sub ARRAY()  { 1 }
 sub HASH()   { 2 }
 
-$VERSION = 0.01;
+$VERSION = 0.02;
 $DEFAULT_BATCH_SIZE = 10 unless defined $DEFAULT_BATCH_SIZE;
 $DEBUG = 0 unless defined $DEBUG;
 
@@ -88,7 +88,7 @@ sub new {
     my $self = bless [ $KEY, $type, $query, $options, { }, undef, ] => $class;
 
     # Is $KEY actually a file?
-    # I do this is DBD::google as well; perhaps there I should submit
+    # I do this in DBD::google as well; perhaps there I should submit
     # a patch to Aaron so that Net::Google can do this directly.
     if (-e $KEY) {
         my $fh = gensym;
@@ -138,8 +138,6 @@ sub new {
 #
 # do_search will use Net::Google to search for $query, and store the
 # results in $self->[DATA]->{$store_as}.
-#
-# For now, shim in some placeholders.
 # ----------------------------------------------------------------------
 sub do_search {
     my ($self, $store_as, $query, $start, $num) = @_;
@@ -199,7 +197,7 @@ sub is_hash   { shift->[TYPE] == HASH   }
 # already have been performed.  In the case of a tied hash, that might
 # not necessarily be the case, so we might have to do a search.
 #
-# Needed to tied scalar, tied hash, and tied array implementations.
+# Needed by tied scalar, tied hash, and tied array implementations.
 # ----------------------------------------------------------------------
 sub FETCH {
     my ($self, $index) = @_;
@@ -433,7 +431,7 @@ sub SPLICE {
     my ($self, $offset, $limit) = @_;
     my $arr = $self->[DATA]->{$self->[KEY]};
 
-    if (@_) {
+    if (@_ > 3) {
         carp "Can't modify search results this way.  Please stuff ".
              "Google the old fashioned way.";
         return;
@@ -548,7 +546,7 @@ the C<max_results> option defined when the array was tied (or
 $DEFAULT_BATCH_SIZE if C<max_results> was not set), though extending
 the array of results can be done by growing the array.
 
-  #$g = 20;
+  $#g = 20;
 
 Will resize the result set to 20 results.  If there are more than 20,
 the ones on the end will be popped off; if there are less than 20,
