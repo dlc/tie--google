@@ -74,7 +74,7 @@ USING Tie::Google
     $DEFAULT_BATCH_SIZE if "max_results" was not set), though extending the
     array of results can be done by growing the array.
 
-      #$g = 20;
+      $#g = 20;
 
     Will resize the result set to 20 results. If there are more than 20, the
     ones on the end will be popped off; if there are less than 20, then more
