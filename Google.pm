@@ -1,7 +1,7 @@
 package Tie::Google;
 
 # ----------------------------------------------------------------------
-# $Id: Google.pm,v 1.2 2003/03/14 19:56:10 dlc Exp $
+# $Id: Google.pm,v 1.3 2003/04/01 14:48:34 dlc Exp $
 # ----------------------------------------------------------------------
 # Apparently, a few people thought this would be a neat idea.
 # The initial email I recieved on the topic:
@@ -41,7 +41,7 @@ sub SCALAR() { 0 }
 sub ARRAY()  { 1 }
 sub HASH()   { 2 }
 
-$VERSION = 0.02;
+$VERSION = 0.03;
 $DEFAULT_BATCH_SIZE = 10 unless defined $DEFAULT_BATCH_SIZE;
 $DEBUG = 0 unless defined $DEBUG;
 

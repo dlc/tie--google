@@ -3,7 +3,7 @@ use strict;
 use ExtUtils::MakeMaker qw(WriteMakefile prompt);
 
 my %PREREQ_PM = (
-    'Net::Google'   => 0.40,
+    'Net::Google'   => 0.60,
     'Symbol'        => 0.00,
 );
 
@@ -15,7 +15,7 @@ my $key = prompt("Enter your Google API key, or a filename containing it:");
 
 WriteMakefile(
     NAME        => "Tie::Google",
-    VERSION     => "0.02",
+    VERSION     => "0.03",
     PREREQ_PM   => \%PREREQ_PM,
     clean       => \%clean,
     macro       => { GOOGLE_KEY => $key },
