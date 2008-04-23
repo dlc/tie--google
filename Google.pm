@@ -1,8 +1,6 @@
 package Tie::Google;
 
 # ----------------------------------------------------------------------
-# $Id: Google.pm,v 1.3 2003/04/01 14:48:34 dlc Exp $
-# ----------------------------------------------------------------------
 # Apparently, a few people thought this would be a neat idea.
 # The initial email I recieved on the topic:
 #
